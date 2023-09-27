@@ -9,6 +9,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import util.FileOpenerThread;
 import util.Function;
 import util.GoldenSection;
 import util.ParableMethod;
@@ -23,6 +24,7 @@ import java.nio.file.Paths;
 
 public class Main {
     private static double prevValue = Double.MAX_VALUE;
+    private static final FileOpenerThread fileThread = new FileOpenerThread();
     private static double middleValue = Double.MAX_VALUE;
     private static final double epsilon = 0.0001;
     private static final double step = 0.01;
@@ -76,9 +78,7 @@ public class Main {
        /* System.out.println(GS.findMin(0, 10, 0.001) + " Min");
         System.out.println(GS.findMax(-1, 0, 0.001) + " Max");*/
 
-        Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd /d D: && .\\newFile.txt\"");
-        Thread.sleep(100);
-        Runtime.getRuntime().exec("taskkill /f /im cmd.exe") ;
+        fileThread.start();
 
 
         XYDataset xyDataset = new XYSeriesCollection(series);
