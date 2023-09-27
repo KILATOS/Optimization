@@ -16,7 +16,7 @@ import util.ParableMethod;
 public class Main {
     private static double prevValue = Double.MAX_VALUE;
     private static double middleValue = Double.MAX_VALUE;
-    private static final double epsilon = 0.0001;
+    private static final double epsilon = 0.00001;
 
 
 
@@ -30,12 +30,16 @@ public class Main {
             if (f > middleValue && middleValue < prevValue && prevValue != Double.MAX_VALUE && Math.abs(f - middleValue) < 1) {
                 System.out.println("//////НАХОДИМ МИНИМУМ ПРИ ПОМОЩИ МЕТОДА ЗОЛОТОГО СЕЧЕНИЯ//////");
                 System.out.println(GoldenSection.findMin(i - 0.02, i, epsilon));
+                System.out.println("НАчало интервала: " + (i-0.02) + " Конец интервала: " + i);
                 System.out.println("ТОЧНОСТЬ РАВНА = " + epsilon);
+                System.out.println("Количество итераций: " + GoldenSection.minOperationsCounter);
                 System.out.println("//////////////////////////////////////////////////////////////");
                 System.out.println();
                 System.out.println("//////НАХОДИМ МИНИМУМ МЕТОДОМ КВАДРАТИЧНОЙ ИНТЕРПОЛЯЦИИ///////");
                 System.out.println(ParableMethod.parabolicMethod(i - 0.02, i,epsilon));
+                System.out.println("НАчало интервала: " + (i-0.02) + " Конец интервала: " + i);
                 System.out.println("ТОЧНОСТЬ РАВНА = " + epsilon);
+                System.out.println("Количество итераций: " +ParableMethod.minOperationsCounter);
                 System.out.println("//////////////////////////////////////////////////////////////");
                 System.out.println();
                 //System.out.println(i + " Минимум");
@@ -43,7 +47,9 @@ public class Main {
             if (f < middleValue && middleValue > prevValue && prevValue != Double.MAX_VALUE && Math.abs(f - middleValue) < 1) {
                 System.out.println("//////НАХОДИМ МАКСИМУМ ПРИ ПОМОЩИ МЕТОДА ЗОЛОТОГО СЕЧЕНИЯ//////");
                 System.out.println(GoldenSection.findMax(i - 0.02, i, epsilon));
+                System.out.println("НАчало интервала: " + (i-0.02) + " Конец интервала: " + i);
                 System.out.println("ТОЧНОСТЬ РАВНА = " + epsilon);
+                System.out.println("Количество итераций: " +GoldenSection.maxOperationsCounter);
                 System.out.println("///////////////////////////////////////////////////////////////");
                 System.out.println();
                 //System.out.println(ParableMethod.parabolicMethod(i - 0.02, i,0.001));

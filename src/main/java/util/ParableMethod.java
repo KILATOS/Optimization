@@ -1,11 +1,13 @@
 package util;
 
 public class ParableMethod {
+    public static int minOperationsCounter = 1;
 
 
 
     public static double parabolicMethod(double a_started,double b_started , double e){
         Function f = new Function(a_started,b_started);
+        minOperationsCounter = 1;
         double a = f.getA();
         double b = f.getB();
         double del = 1;
@@ -41,6 +43,7 @@ public class ParableMethod {
             }
             del = Math.abs(result - x);
             result = x;
+            minOperationsCounter++;
 
         }
         return result;
